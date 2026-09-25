@@ -1,1 +1,1 @@
-# Hi shruti
+# Let's educate

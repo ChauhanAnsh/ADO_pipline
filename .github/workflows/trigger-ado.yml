@@ -2,7 +2,7 @@ name: Trigger ADO Pipeline from GitHub
 
 on:
   push:
-    branches: [ main ]  # Jab bhi GitHub ya mirror par push ho
+    branches: [ feature ]  # Yahan main ki jagah feature kar dein
 
 jobs:
   trigger:

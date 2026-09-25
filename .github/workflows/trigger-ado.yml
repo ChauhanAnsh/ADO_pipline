@@ -1,0 +1,17 @@
+name: Trigger ADO Pipeline from GitHub
+
+on:
+  push:
+    branches: [ main ]  # Jab bhi GitHub ya mirror par push ho
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Azure DevOps Pipeline REST API
+        run: |
+          curl -u ":${{ secrets.ADO_PAT }}" \
+          -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"definition": {"id": ${{ secrets.ADO_PIPELINE_ID }}}}' \
+          "https://dev.azure.com/${{ secrets.ADO_ORG }}/${{ secrets.ADO_PROJECT }}/_apis/build/builds?api-version=7.0"
